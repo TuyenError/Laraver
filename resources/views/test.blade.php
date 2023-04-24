@@ -1,10 +1,15 @@
-<h1>
-    Welcome to PNV24
+<!DOCTYPE html>
+<html>
+<head>
 
-</h1>
-<p> Student </p>
-<p> {{$hocsinh['name']}}</p>
-<p> {{$hocsinh['age']}}</p>
-<p> {{$hocsinh['class']}}</p>
+</head>
+<body>
+<?php
+foreach ($student as $key => $value){
+    echo "<p>".$value."</p>";
+}
+?>
+</body>
+</html>
 
 

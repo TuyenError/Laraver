@@ -1,7 +1,6 @@
 <?php
 
-// use App\Http\Controllers\UserController;
-use App\Http\Controllers\SumController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,16 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-// Route::get('/welcome', function () {
-//     return 'Chào mừng các bạn đã đến với PNV';
-// });
+Route::get('/welcome', function () {
+    return 'Chào mừng các bạn đã đến với PNV';
+});
 
-// //Chạy controller
-// Route::get('/getIndex', [UserController::class, 'getIndex']);
+//Chạy controller
+Route::get('/getIndex', [UserController::class, 'getIndex']);
 
 
 //Tính tổng
@@ -34,3 +33,10 @@ Route::post('/sum', [App\Http\Controllers\SumController::class, 'Summ']);
 //AreaOfShape
 Route::get('/AreaOfShape', [App\Http\Controllers\AreaController::class, 'index']);
 Route::post('/AreaOfShape', [App\Http\Controllers\AreaController::class, 'Area']);
+
+
+//Singup
+
+Route::get('signup',[App\Http\Controllers\SignupController::class ,'index']);
+Route::post('signup',[App\Http\Controllers\SignupController::class ,'displayInfor']);
+
