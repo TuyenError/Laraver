@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,4 +39,16 @@ Route::post('/AreaOfShape', [App\Http\Controllers\AreaController::class, 'Area']
 
 Route::get('signup',[App\Http\Controllers\SignupController::class ,'index']);
 Route::post('signup',[App\Http\Controllers\SignupController::class ,'displayInfor']);
+
+//
+Route::post('/valida', [ValidationController::class, "validation"]);
+
+Route::get('/addproduct',[ListProductsController::class,"showAddForm"])->name('addproduct');
+
+Route::post('/addproduct',[ListProductsController::class,"creatSession"]);
+
+Route::get('/showproducts',[ListProductsController::class,"showProduct"])->name('showproducts');
+
+//sanpham
+Route::get('master', [PageController::class, "getIndex"]);
 
