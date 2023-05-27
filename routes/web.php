@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
+use Illuminate\Support\Facades\Schema;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,4 +52,17 @@ Route::get('/showproducts',[ListProductsController::class,"showProduct"])->name(
 
 //sanpham
 Route::get('master', [PageController::class, "getIndex"]);
+
+//
+Route::get('database',function(){
+    Schema::create('loaisp',function($table){
+        $table -> increments('id');
+        $table -> string('ten',200);
+    });
+    echo "Đã thực hiện thành công";
+});
+
+Route::get('addroom',[App\Http\Controllers\addRoomsController::class ,'index']);
+Route::post('addroom',[App\Http\Controllers\addRoomsController::class ,'showrooms']);
+
 
