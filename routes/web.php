@@ -66,3 +66,5 @@ Route::get('addroom',[App\Http\Controllers\addRoomsController::class ,'index']);
 Route::post('addroom',[App\Http\Controllers\addRoomsController::class ,'showrooms']);
 
 
+Route::get('trangchu', [App\Http\Controllers\PageController::class, "getIndex"]);
+Route::post('trangchu', [App\Http\Controllers\PageController::class, "getIndex"]);
