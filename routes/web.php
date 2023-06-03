@@ -75,4 +75,22 @@ Route::get('/detail/{id}', [App\Http\Controllers\PageController::class, 'getDeta
 Route::get('/contact', [App\Http\Controllers\PageController::class, 'getContact']);
 Route::get('/about', [App\Http\Controllers\PageController::class, 'getAbout']);
 
+Route::get('/admin', [App\Http\Controllers\PageController::class, 'getIndexAdmin']);
+
+Route::get('/admin-add-form', [App\Http\Controllers\PageController::class, 'getAdminAdd'])->name('add-product');
+Route::post('/admin-add-form', [App\Http\Controllers\PageController::class, 'postAdminAdd']);
+
+Route::get('/admin-edit-form/{id}', [App\Http\Controllers\PageController::class, 'getAdminEdit']);
+Route::post('/admin-edit', [App\Http\Controllers\PageController::class, 'postAdminEdit']);
+
+
+Route::post('/admin-delete/{id}', [App\Http\Controllers\PageController::class, 'postAdminDelete']);
+
+
+
+
+
+
+
+
 

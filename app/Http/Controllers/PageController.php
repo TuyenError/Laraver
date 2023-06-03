@@ -7,6 +7,8 @@ use App\Models\Slide;
 use App\Models\products;
 use App\Models\type_products;
 use Illuminate\Http\Request;
+use App\Models\bill_detail;
+
 
 class PageController extends Controller
 {
@@ -33,6 +35,72 @@ class PageController extends Controller
         return view('page.chitiet_sanpham', compact('sanpham', 'splienquan', 'comments'));
     }
 
+    public function getIndexAdmin(){
+         $product = products::all();
+         return view('page.admin')->with(['products' => $product, 'sumSold' => count(bill_detail::all())]);
 
+    }
+    public function getAdminAdd()
+    {
+    return view('page.formAdd');
+    }
 
+    public function postAdminAdd(Request $request)
+    {
+        $products = new products();
+        if ($request->hasFile('inputImage')) {
+        $file = $request->file('inputImage');
+        $fileName = $file->getClientOriginalName('inputImage');
+        $file->move('source/image/product', $fileName);
+        }
+        $file_name = null;
+        if ($request->file('inputImage') != null) {
+        $file_name = $request->file('inputImage')->getClientOriginalName();
+        }
+
+        $products->name = $request->inputName;
+        $products->image = $file_name;
+        $products->description = $request->inputDescription;
+        $products->unit_price = $request->inputPrice;
+        $products->promotion_price = $request->inputPromotionPrice;
+        $products->unit = $request->inputUnit;
+        $products->new = $request->inputNew;
+        $products->id_type = $request->inputType;
+        $products->save();
+        return $this->getIndexAdmin();
+    }
+
+    public function getAdminEdit($id){
+        $products =  products::findOrFail($id)->first();
+        return view('page.formEdit')->with('products', $products);
+    }
+    public function postAdminEdit(Request $request)
+    {
+        $id = $request->editId;
+        $products= products::find($id);
+        if($request->hasFile('editImage')){
+            $file = $request->file('editImage');
+            $fileName = $file->getClientOriginalName('eidtImage');
+            $file->move('source/image/product', $fileName);
+        }
+        if ($request->file('editImage') != null) {
+            $products->image = $fileName;
+        }
+        $products->name = $request->editName;
+        $products->description = $request->editDescription;
+        $products->unit_price = $request->editPrice;
+        $products->promotion_price = $request->editPromotionPrice;
+        $products->unit = $request->editUnit;
+        $products->new = $request->editNew;
+        $products->id_type = $request->editType;
+        $products->save();
+        return $this->getIndexAdmin();
+    }
+
+    public function postAdminDelete($id)
+    {
+    $products = products::find($id);
+    $products->delete();
+    return $this->getIndexAdmin();
+    }
 }
