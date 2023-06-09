@@ -86,6 +86,15 @@ Route::post('/admin-edit', [App\Http\Controllers\PageController::class, 'postAdm
 
 Route::post('/admin-delete/{id}', [App\Http\Controllers\PageController::class, 'postAdminDelete']);
 
+//Login - register
+Route::get('/register', function () {return view('page.register');});
+Route::post('/register', [App\Http\Controllers\PageController::class,'page.register']);
+
+Route::get('/login', function () {return view('page.login');});
+Route::post('/login',[App\Http\Controllers\PageController::class,'page.login']);
+
+
+
 
 
 
