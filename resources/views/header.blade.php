@@ -42,6 +42,7 @@
                                     @foreach($product_cart as $product)
                                         <div class="cart-item" id="cart-item{{$product['item']['id']}}">
                                             <div class="cart-item-delete" value="{{$product['item']['id']}}" soluong="{{$product['qty']}}"><i class="fa fa-times"></i></div>
+                                            <a class="cart-item-delete" href="{{route('xoagiohang',$product['item']['id'])}}" value="{{$product['item']['id']}}" soluong="{{$product['qty']}}"><i class="fa fa-times"></i></a>
                                             <div class="media">
                                                 <a class="pull-left" href="#"><img src="source/assets/dest/images/products/cart/1.png" alt=""></a>
                                                 <div class="media-body">
@@ -57,7 +58,7 @@
 
                                         <div class="center">
                                             <div class="space10">&nbsp;</div>
-                                            <a href="checkout.html" class="beta-btn primary text-center">Đặt hàng <i class="fa fa-chevron-right"></i></a>
+                                            <a href="check-out" class="beta-btn primary text-center">Đặt hàng <i class="fa fa-chevron-right"></i></a>
                                         </div>
                                     </div>
                                 </div>

@@ -97,8 +97,12 @@ Route::get('/logout', [App\Http\Controllers\UserController::class, 'Logout']);
 
 //---------------Cart---------------------------//
 Route::get('add-to-cart/{id}', [App\Http\Controllers\PageController::class, 'getAddToCart'])->name('themgiohang');
-Route::get('del-cart/{id}', [App\Http\Controllers\PageController::class, 'getDelItemCart'])->name('xoagiohang');
+Route::get('del-cart/{id}', [App\Http\Controllers\PageController::class, 'getDaItemCart'])->name('xoagiohang');
 
+
+// ----------------- CHECKOUT ---------------
+Route::get('check-out', [App\Http\Controllers\PageController::class, 'getCheckout'])->name('dathang');
+Route::post('check-out', [App\Http\Controllers\PageController::class, 'postCheckout'])->name('dathang');
 
 
 
